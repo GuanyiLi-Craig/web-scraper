@@ -12,7 +12,8 @@ class AddgeneSpider(scrapy.Spider):
     def parse(self, response):
         # response.text - response string
         # response.body - binary data before decoding
-        # response.xpath(...) - get the regx result
-        # response.extract() - extract property value of selector object data
-        gene = response.xpath('//*[@id="addgene-full"]/ul/li/div/div/div[2]/textarea/text()') #//*[@id="addgene-partial"]/ul/li/div/div/div[2]/textarea
-        print(gene.extract())
+        # response.xpath(...) - get the result given xpath
+        # response.extract() - extract 'data' of selector object
+        geneFull = response.xpath('//*[@id="addgene-full"]/ul/li/div/div/div[2]/textarea/text()')
+        genePartial = response.xpath('//*[@id="addgene-partial"]/ul/li/div/div/div[2]/textarea/text()')
+        print(geneFull.extract())
